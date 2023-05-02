@@ -1,0 +1,2 @@
+% print hello world
+put "hello world"
