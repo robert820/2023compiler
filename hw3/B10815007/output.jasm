@@ -1,0 +1,62 @@
+class output {
+	field static int sum
+	field static int index
+sipush 0
+putstatic int output.sum
+sipush 1
+L0:
+iload 29
+sipush 12
+isub
+ifle L2
+iconst_0
+goto L3
+L2:
+iconst_1
+L3:
+ifeq L1
+getstatic int output.sum
+getstatic int output.index
+		iadd
+putstatic int output.sum
+iload 29
+sipush 1
+iadd
+istore 29
+goto L0
+L1:
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "The result is "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+		getstatic java.io.PrintStream java.lang.System.out
+getstatic int output.sum
+		invokevirtual void java.io.PrintStream.print(int)
+sipush 0
+putstatic int output.sum
+sipush 1
+putstatic int output.index
+L4:
+getstatic int output.sum
+getstatic int output.index
+		iadd
+putstatic int output.sum
+getstatic int output.index
+sipush 1
+		iadd
+putstatic int output.index
+getstatic int output.index
+sipush 10
+isub
+ifeq L6
+iconst_0
+goto L7
+L6:
+iconst_1
+L7:
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "The result is "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+		getstatic java.io.PrintStream java.lang.System.out
+getstatic int output.sum
+		invokevirtual void java.io.PrintStream.print(int)
+}

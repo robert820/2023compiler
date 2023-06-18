@@ -1,0 +1,74 @@
+class forloop_test {
+	field static int sum
+	field static int index
+	method public static void main(java.lang.String[])
+	max_stack 15
+	max_locals 15
+	{
+sipush 0
+putstatic int forloop_test.sum
+sipush 1
+putstatic int forloop_test.index
+L0:
+getstatic int forloop_test.index
+sipush 10
+isub
+ifgt L1
+iconst_0
+goto L2
+L1:
+iconst_1
+L2:
+ifne L3
+getstatic int forloop_test.sum
+getstatic int forloop_test.index
+		iadd
+putstatic int forloop_test.sum
+getstatic int forloop_test.index
+sipush 1
+iadd
+putstatic int forloop_test.index
+goto L0
+L3:
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "The result is "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+		getstatic java.io.PrintStream java.lang.System.out
+getstatic int forloop_test.sum
+		invokevirtual void java.io.PrintStream.print(int)
+getstatic java.io.PrintStream java.lang.System.out
+invokevirtual void java.io.PrintStream.println()
+sipush 0
+putstatic int forloop_test.sum
+sipush 1
+putstatic int forloop_test.index
+L4:
+getstatic int forloop_test.sum
+getstatic int forloop_test.index
+		iadd
+putstatic int forloop_test.sum
+getstatic int forloop_test.index
+sipush 1
+		iadd
+putstatic int forloop_test.index
+getstatic int forloop_test.index
+sipush 10
+isub
+ifeq L6
+iconst_0
+goto L7
+L6:
+iconst_1
+L7:
+ifne L8
+goto L4
+L5:
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "The result is "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+		getstatic java.io.PrintStream java.lang.System.out
+getstatic int forloop_test.sum
+		invokevirtual void java.io.PrintStream.print(int)
+		return
+	}
+}
