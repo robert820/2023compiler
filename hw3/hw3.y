@@ -37,9 +37,9 @@ std::string ClassName;
 int hasMain = 0;
 int hasProgram = 0;
 int loop_number = 0;
-std::vector<int> exitLabels = std::vector(255, -1);
+std::vector<int> exitLabels = std::vector<int>(255, -1);
 int if_number = 0;
-std::vector<int> ifLabels = std::vector(255, -1);
+std::vector<int> ifLabels = std::vector<int>(255, -1);
 
 union uDependency{
 	int low;
