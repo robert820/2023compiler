@@ -594,6 +594,7 @@ function:       FUNCTION id {
 					sd->returnByFun = false;
 					insert(std::string($2._str),*sd,1);	
 					fprintf(output, "\t{\n");
+					delete sd;
                 }
 				 statements fun_re statements fd	{
 					fprintf(output, "\t}\n");
@@ -644,6 +645,7 @@ procedure:  PROCEDURE id {
 						sd->returnByFun = false;
 						insert(std::string($2._str),*sd,1);	
 						fprintf(output, "\t{\n");
+						delete sd;
                 }
                  statements fd	{
 								fprintf(output, "\t\treturn\n");
