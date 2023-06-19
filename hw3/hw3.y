@@ -942,7 +942,7 @@ declaration_value: integer_expression{
 							$$.type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %f\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -1105,7 +1105,7 @@ expression: integer_expression{
 							$$.type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -1729,7 +1729,7 @@ int main(int argc, char **argv)
 
 	// 改 classname 為 wholename(完整檔案名稱)
 	char *filename = strtok(argv[1], ".");
-	char *wholeName;
+	char wholeName[255];
 	ClassName = filename;
 	sprintf(wholeName, "%s.jasm", filename);
 

@@ -2578,7 +2578,7 @@ yyreduce:
 							(yyval.token).type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %f\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -2788,7 +2788,7 @@ yyreduce:
 							(yyval.token).type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
