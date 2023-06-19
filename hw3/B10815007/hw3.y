@@ -1,7 +1,3 @@
-%code requires {
-   #include "token.h"
-}
-
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,8 +7,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "token.h"
 #include "SymbolTable.h"
-#include "SymbolDesc.h"
 
 #define Trace(t)        printf(t)
 extern FILE *yyin;
@@ -37,9 +33,9 @@ std::string ClassName;
 int hasMain = 0;
 int hasProgram = 0;
 int loop_number = 0;
-std::vector<int> exitLabels = std::vector(255, -1);
+std::vector<int> exitLabels = std::vector<int>(255, -1);
 int if_number = 0;
-std::vector<int> ifLabels = std::vector(255, -1);
+std::vector<int> ifLabels = std::vector<int>(255, -1);
 
 union uDependency{
 	int low;
@@ -594,6 +590,7 @@ function:       FUNCTION id {
 					sd->returnByFun = false;
 					insert(std::string($2._str),*sd,1);	
 					fprintf(output, "\t{\n");
+					delete sd;
                 }
 				 statements fun_re statements fd	{
 					fprintf(output, "\t}\n");
@@ -635,7 +632,7 @@ procedure:  PROCEDURE id {
                                 fprintf(output, ")\n");
                                 resetList();
                         }else{ 
-                                printf("procedure 名稱 不能為 main\n"); 
+                                // printf("procedure 名稱 不能為 main\n"); 
                         }
 						$<token>$._ptr = sd;
                         fprintf(output, "\tmax_stack 15\n\tmax_locals 15\n");
@@ -644,6 +641,7 @@ procedure:  PROCEDURE id {
 						sd->returnByFun = false;
 						insert(std::string($2._str),*sd,1);	
 						fprintf(output, "\t{\n");
+						delete sd;
                 }
                  statements fd	{
 								fprintf(output, "\t\treturn\n");
@@ -681,7 +679,7 @@ arguments: arguments argument{
 				uDependency value;
                 int i = 0;
                 for(i;i<255 && varList[i]!=-1;i++){
-                        printf("%d", varList[i]);
+                        // printf("%d", varList[i]);
                 }
 				sd.symtype = Token2Symbol($1.type);
 				value.value = $1._ptr;
@@ -874,9 +872,7 @@ exit_optional: WHEN expression{
                 |
                 ;
 
-returnValue: expression
-        |
-        ;
+
 declaration_value: integer_expression{
 					$$.returnByFun = false;
 				}
@@ -946,7 +942,7 @@ declaration_value: integer_expression{
 							$$.type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -971,14 +967,6 @@ declaration_value: integer_expression{
 								fprintf(output, " java.lang.String ");
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << " boolean ";
-								$$.type = TokenType::vbool;
-								break;
-								case SymbolType::array:
-								jbfile << " array ";
-								$$.type = TokenType::varray;
-								break;*/
 								default:
 								break;
 							}
@@ -1059,13 +1047,12 @@ expression: integer_expression{
 				if(seize(idName,pSD)){
 					std::vector<int> * list = (std::vector<int>*)$3._ptr;
 					if((pSD->symtype != SymbolType::sfunction) && (pSD->symtype != SymbolType::sprocedure)){
-						printf("%s: Is not a Function", idName);
+						// printf("%s: Is not a Function", idName);
 					}
 					else if(!matchArgs(*list,*pSD)){
-						printf("Argument type Unmatch");
+						// printf("Argument type Unmatch");
 					}
 					else{
-						// printf("%d", pSD->symdeps[0].retType);
 						fprintf(output, "invokestatic %s %s.%s(", SymType2JBStr(pSD->symdeps[0].retType).c_str(), ClassName.c_str(), idName.c_str());
 						for(int i = 0 ; i < list->size();++i ){
 							fprintf(output, "%s", SymType2JBStr((*list)[i]).c_str());
@@ -1084,6 +1071,7 @@ expression: integer_expression{
 				else {
 					$$.type = TokenType::blank;
 				}
+				// delete pSD;
 			}
             | bool_expresssion{
 				$$.returnByFun = false;
@@ -1116,7 +1104,7 @@ expression: integer_expression{
 							$$.type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc2_w %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -1141,14 +1129,6 @@ expression: integer_expression{
 								fprintf(output, " java.lang.String ");
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << " boolean ";
-								$$.type = TokenType::vbool;
-								break;
-								case SymbolType::array:
-								jbfile << " array ";
-								$$.type = TokenType::varray;
-								break;*/
 								default:
 								break;
 							}
@@ -1169,15 +1149,6 @@ expression: integer_expression{
 								fprintf(output, "aload %d\n", pSD->symindex);
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << "cload " << <<endl;
-								break;
-								case SymbolType::std::string:
-								jbfile << "sload " << <<endl;
-								break;
-								case SymbolType::array:
-								jbfile << "aload " << <<endl;
-								break;*/
 								default:
 								break;
 							}
@@ -1187,6 +1158,7 @@ expression: integer_expression{
 				else {
 				}
 				delete $1._str;
+				// delete pSD;
             }
 			| id '[' expression ']' {
 				// array 的部分
@@ -1310,7 +1282,7 @@ condition: IF expression IF_PREACT THEN statements %prec LOWER_THAN_ELSE  {
 
 condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {	
 			if($2.type != TokenType::vbool){
-				printf("Expression must be boolean");
+				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", $<token>3._int-1);
 		} endif
@@ -1320,7 +1292,7 @@ condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {
 		} 
 		statements_r  {	
 			if($2.type != TokenType::vbool){
-				printf("Expression must be boolean");
+				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", $<token>3._int);
 		} endif
@@ -1329,7 +1301,7 @@ condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {
 IF_PREACT: {
 		fprintf(output, "ifeq L%d\n", LabelIndex++);
 		$<token>$._int = LabelIndex++;
-		// printf("%d", LabelIndex);
+		// // printf("%d", LabelIndex);
 
 		ENTERSCOPE();
 		if_number++;
@@ -1377,10 +1349,10 @@ loop: LOOP {
 
 			if(seize(idName, pSD)){
 				if(pSD->readonly){
-					printf("Assignment to Readonly Variable!");
+					// printf("Assignment to Readonly Variable!");
 				}
 				else if(pSD->symtype != Token2Symbol($4.type)){
-					printf("Type Unmatch");
+					// printf("Type Unmatch");
 				}
 				else {
 					if(pSD->global){
@@ -1443,6 +1415,7 @@ loop: LOOP {
 					break;
 				}
 			}
+			// delete pSD;
 		}
 		'.' '.' expression {
 			std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -1520,6 +1493,7 @@ loop: LOOP {
 				
 			}
 			LEAVESCOPE();
+			// delete pSD;
 		}
 		 END FOR
     ;
@@ -1627,7 +1601,7 @@ constant_declaration: CONST id ASSIGN declaration_value{
 							insert(std::string(name),sd);
 							delete name;
 						}else{
-							printf("declaration 型態錯誤\n" );
+							// printf("declaration 型態錯誤\n" );
 						}
                     }
                     | CONST id ':' type ASSIGN declaration_value {
@@ -1657,7 +1631,7 @@ constant_declaration: CONST id ASSIGN declaration_value{
 								delete name;
 							}
 						}else{
-							printf("declaration 型態錯誤或型態不一樣\n" );
+							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
                     }
                     ;
@@ -1668,7 +1642,6 @@ variable_declaration: VAR id ':' type{
 			sd.symtype = Token2Symbol($4.type);
 			sd.returnByFun = false;
 			insert(std::string(name),sd);
-			//printf("%s %s", name.c_str(), $2._str);
 		    }
                     | VAR id ASSIGN declaration_value{ 
 						if (($4.type < SymbolType::sarray) && ($4.type < SymbolType::sarray)){
@@ -1692,7 +1665,7 @@ variable_declaration: VAR id ':' type{
 							insert(std::string(name),sd);
 							delete name;
 						}else{
-							printf("declaration 型態錯誤\n" );
+							// printf("declaration 型態錯誤\n" );
 						}
 		    		}
                     | VAR id ':' type ASSIGN declaration_value{ 
@@ -1719,7 +1692,7 @@ variable_declaration: VAR id ':' type{
 								delete name;
 							}
 						}else{
-							printf("declaration 型態錯誤或型態不一樣\n" );
+							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
 		    		}
                     ;
@@ -1755,7 +1728,7 @@ int main(int argc, char **argv)
 
 	// 改 classname 為 wholename(完整檔案名稱)
 	char *filename = strtok(argv[1], ".");
-	char *wholeName;
+	char wholeName[255];
 	ClassName = filename;
 	sprintf(wholeName, "%s.jasm", filename);
 
@@ -1764,7 +1737,7 @@ int main(int argc, char **argv)
     /* perform parsing */
     if (yyparse() == 1)             /* parsing */
         yyerror("Parsing error !"); /* syntax error */
-
+	
+	fclose(yyin);
     fclose(output);
-
 }
