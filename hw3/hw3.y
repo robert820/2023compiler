@@ -635,7 +635,7 @@ procedure:  PROCEDURE id {
                                 fprintf(output, ")\n");
                                 resetList();
                         }else{ 
-                                printf("procedure 名稱 不能為 main\n"); 
+                                // printf("procedure 名稱 不能為 main\n"); 
                         }
 						$<token>$._ptr = sd;
                         fprintf(output, "\tmax_stack 15\n\tmax_locals 15\n");
@@ -681,7 +681,7 @@ arguments: arguments argument{
 				uDependency value;
                 int i = 0;
                 for(i;i<255 && varList[i]!=-1;i++){
-                        printf("%d", varList[i]);
+                        // printf("%d", varList[i]);
                 }
 				sd.symtype = Token2Symbol($1.type);
 				value.value = $1._ptr;
@@ -1059,10 +1059,10 @@ expression: integer_expression{
 				if(seize(idName,pSD)){
 					std::vector<int> * list = (std::vector<int>*)$3._ptr;
 					if((pSD->symtype != SymbolType::sfunction) && (pSD->symtype != SymbolType::sprocedure)){
-						printf("%s: Is not a Function", idName);
+						// printf("%s: Is not a Function", idName);
 					}
 					else if(!matchArgs(*list,*pSD)){
-						printf("Argument type Unmatch");
+						// printf("Argument type Unmatch");
 					}
 					else{
 						fprintf(output, "invokestatic %s %s.%s(", SymType2JBStr(pSD->symdeps[0].retType).c_str(), ClassName.c_str(), idName.c_str());
@@ -1294,7 +1294,7 @@ condition: IF expression IF_PREACT THEN statements %prec LOWER_THAN_ELSE  {
 
 condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {	
 			if($2.type != TokenType::vbool){
-				printf("Expression must be boolean");
+				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", $<token>3._int-1);
 		} endif
@@ -1304,7 +1304,7 @@ condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {
 		} 
 		statements_r  {	
 			if($2.type != TokenType::vbool){
-				printf("Expression must be boolean");
+				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", $<token>3._int);
 		} endif
@@ -1313,7 +1313,7 @@ condition_r: IF expression IF_PREACT THEN statements_r %prec LOWER_THAN_ELSE  {
 IF_PREACT: {
 		fprintf(output, "ifeq L%d\n", LabelIndex++);
 		$<token>$._int = LabelIndex++;
-		// printf("%d", LabelIndex);
+		// // printf("%d", LabelIndex);
 
 		ENTERSCOPE();
 		if_number++;
@@ -1361,10 +1361,10 @@ loop: LOOP {
 
 			if(seize(idName, pSD)){
 				if(pSD->readonly){
-					printf("Assignment to Readonly Variable!");
+					// printf("Assignment to Readonly Variable!");
 				}
 				else if(pSD->symtype != Token2Symbol($4.type)){
-					printf("Type Unmatch");
+					// printf("Type Unmatch");
 				}
 				else {
 					if(pSD->global){
@@ -1613,7 +1613,7 @@ constant_declaration: CONST id ASSIGN declaration_value{
 							insert(std::string(name),sd);
 							delete name;
 						}else{
-							printf("declaration 型態錯誤\n" );
+							// printf("declaration 型態錯誤\n" );
 						}
                     }
                     | CONST id ':' type ASSIGN declaration_value {
@@ -1643,7 +1643,7 @@ constant_declaration: CONST id ASSIGN declaration_value{
 								delete name;
 							}
 						}else{
-							printf("declaration 型態錯誤或型態不一樣\n" );
+							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
                     }
                     ;
@@ -1677,7 +1677,7 @@ variable_declaration: VAR id ':' type{
 							insert(std::string(name),sd);
 							delete name;
 						}else{
-							printf("declaration 型態錯誤\n" );
+							// printf("declaration 型態錯誤\n" );
 						}
 		    		}
                     | VAR id ':' type ASSIGN declaration_value{ 
@@ -1704,7 +1704,7 @@ variable_declaration: VAR id ':' type{
 								delete name;
 							}
 						}else{
-							printf("declaration 型態錯誤或型態不一樣\n" );
+							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
 		    		}
                     ;
