@@ -1,7 +1,3 @@
-%code requires {
-   #include "token.h"
-}
-
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,8 +7,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "token.h"
 #include "SymbolTable.h"
-#include "SymbolDesc.h"
 
 #define Trace(t)        printf(t)
 extern FILE *yyin;

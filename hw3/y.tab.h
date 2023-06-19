@@ -44,12 +44,6 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
-/* "%code requires" blocks.  */
-#line 1 "hw3.y"
-
-   #include "token.h"
-
-#line 53 "y.tab.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -189,11 +183,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 412 "hw3.y"
+#line 408 "hw3.y"
 
     Token                    token;
 
-#line 197 "y.tab.h"
+#line 191 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

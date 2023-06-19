@@ -1,0 +1,14 @@
+// 清除之前產生的檔案
+make clean
+
+// 產生compiler.exe 以及其他需要的檔案
+make
+
+// 產生 jasm 檔 XXX 為檔名 ex: HelloWorld.st
+./compiler.exe XXX.st
+
+// 產生 class 檔
+./javaa XXX.jasm
+
+// 執行 class 檔 ，輸出執行結果
+java XXX
