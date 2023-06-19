@@ -876,9 +876,7 @@ exit_optional: WHEN expression{
                 |
                 ;
 
-returnValue: expression
-        |
-        ;
+
 declaration_value: integer_expression{
 					$$.returnByFun = false;
 				}

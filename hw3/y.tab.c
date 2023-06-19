@@ -1205,14 +1205,14 @@ static const yytype_int16 yyrline[] =
      657,   676,   702,   707,   708,   711,   716,   717,   720,   721,
      724,   725,   726,   727,   730,   731,   732,   733,   734,   763,
      764,   764,   788,   788,   812,   816,   826,   827,   828,   831,
-     832,   835,   863,   869,   876,   882,   885,   888,   921,   924,
-     925,  1023,  1029,  1035,  1041,  1050,  1053,  1056,  1090,  1093,
-    1096,  1177,  1181,  1187,  1193,  1199,  1207,  1211,  1217,  1224,
-    1225,  1228,  1233,  1238,  1243,  1248,  1253,  1260,  1265,  1269,
-    1275,  1279,  1279,  1285,  1289,  1285,  1297,  1297,  1303,  1307,
-    1303,  1315,  1325,  1325,  1333,  1333,  1348,  1434,  1447,  1348,
-    1515,  1527,  1539,  1551,  1563,  1575,  1589,  1590,  1591,  1594,
-    1621,  1653,  1660,  1685,  1714
+     832,   835,   863,   869,   876,   880,   883,   886,   919,   922,
+     923,  1021,  1027,  1033,  1039,  1048,  1051,  1054,  1088,  1091,
+    1094,  1175,  1179,  1185,  1191,  1197,  1205,  1209,  1215,  1222,
+    1223,  1226,  1231,  1236,  1241,  1246,  1251,  1258,  1263,  1267,
+    1273,  1277,  1277,  1283,  1287,  1283,  1295,  1295,  1301,  1305,
+    1301,  1313,  1323,  1323,  1331,  1331,  1346,  1432,  1445,  1346,
+    1513,  1525,  1537,  1549,  1561,  1573,  1587,  1588,  1589,  1592,
+    1619,  1651,  1658,  1683,  1712
 };
 #endif
 
@@ -2495,7 +2495,7 @@ yyreduce:
     break;
 
   case 55: /* declaration_value: integer_expression  */
-#line 882 "hw3.y"
+#line 880 "hw3.y"
                                      {
 					(yyval.token).returnByFun = false;
 				}
@@ -2503,7 +2503,7 @@ yyreduce:
     break;
 
   case 56: /* declaration_value: '(' expression ')'  */
-#line 885 "hw3.y"
+#line 883 "hw3.y"
                                 {
                 (yyval.token) = (yyvsp[-1].token);
             }
@@ -2511,7 +2511,7 @@ yyreduce:
     break;
 
   case 57: /* declaration_value: id '(' expression_list ')'  */
-#line 888 "hw3.y"
+#line 886 "hw3.y"
                                         {
 				SymbolDesc * pSD;
 				(yyval.token).returnByFun = true;
@@ -2549,7 +2549,7 @@ yyreduce:
     break;
 
   case 58: /* declaration_value: bool_expresssion  */
-#line 921 "hw3.y"
+#line 919 "hw3.y"
                               {
 				(yyval.token).returnByFun = false;
 			}
@@ -2557,7 +2557,7 @@ yyreduce:
     break;
 
   case 60: /* declaration_value: id  */
-#line 925 "hw3.y"
+#line 923 "hw3.y"
                 {
                 SymbolDesc * pSD;
 				(yyval.token).returnByFun = false;
@@ -2660,7 +2660,7 @@ yyreduce:
     break;
 
   case 61: /* declaration_value: integer  */
-#line 1023 "hw3.y"
+#line 1021 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vint;
@@ -2671,7 +2671,7 @@ yyreduce:
     break;
 
   case 62: /* declaration_value: str  */
-#line 1029 "hw3.y"
+#line 1027 "hw3.y"
                   {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vstring;
@@ -2682,7 +2682,7 @@ yyreduce:
     break;
 
   case 63: /* declaration_value: boolean  */
-#line 1035 "hw3.y"
+#line 1033 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vbool;
@@ -2693,7 +2693,7 @@ yyreduce:
     break;
 
   case 64: /* declaration_value: real  */
-#line 1041 "hw3.y"
+#line 1039 "hw3.y"
                    {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vreal;
@@ -2704,7 +2704,7 @@ yyreduce:
     break;
 
   case 65: /* expression: integer_expression  */
-#line 1050 "hw3.y"
+#line 1048 "hw3.y"
                               {
 				(yyval.token).returnByFun = false;
 			}
@@ -2712,7 +2712,7 @@ yyreduce:
     break;
 
   case 66: /* expression: '(' expression ')'  */
-#line 1053 "hw3.y"
+#line 1051 "hw3.y"
                                 {
                 (yyval.token) = (yyvsp[-1].token);
             }
@@ -2720,7 +2720,7 @@ yyreduce:
     break;
 
   case 67: /* expression: id '(' expression_list ')'  */
-#line 1056 "hw3.y"
+#line 1054 "hw3.y"
                                         {
 				SymbolDesc * pSD;
 				std::string idName = std::string((yyvsp[-3].token)._str);
@@ -2759,7 +2759,7 @@ yyreduce:
     break;
 
   case 68: /* expression: bool_expresssion  */
-#line 1090 "hw3.y"
+#line 1088 "hw3.y"
                               {
 				(yyval.token).returnByFun = false;
 			}
@@ -2767,7 +2767,7 @@ yyreduce:
     break;
 
   case 69: /* expression: comparison  */
-#line 1093 "hw3.y"
+#line 1091 "hw3.y"
                         {
 				(yyval.token).returnByFun = false;
 			}
@@ -2775,7 +2775,7 @@ yyreduce:
     break;
 
   case 70: /* expression: id  */
-#line 1096 "hw3.y"
+#line 1094 "hw3.y"
                 {
                 SymbolDesc * pSD;
 				(yyval.token).returnByFun = false;
@@ -2861,7 +2861,7 @@ yyreduce:
     break;
 
   case 71: /* expression: id '[' expression ']'  */
-#line 1177 "hw3.y"
+#line 1175 "hw3.y"
                                                 {
 				// array 的部分
 				(yyval.token).type = vint;
@@ -2870,7 +2870,7 @@ yyreduce:
     break;
 
   case 72: /* expression: integer  */
-#line 1181 "hw3.y"
+#line 1179 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vint;
@@ -2881,7 +2881,7 @@ yyreduce:
     break;
 
   case 73: /* expression: str  */
-#line 1187 "hw3.y"
+#line 1185 "hw3.y"
                   {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vstring;
@@ -2892,7 +2892,7 @@ yyreduce:
     break;
 
   case 74: /* expression: boolean  */
-#line 1193 "hw3.y"
+#line 1191 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vbool;
@@ -2903,7 +2903,7 @@ yyreduce:
     break;
 
   case 75: /* expression: real  */
-#line 1199 "hw3.y"
+#line 1197 "hw3.y"
                    {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vreal;
@@ -2914,7 +2914,7 @@ yyreduce:
     break;
 
   case 76: /* expression_list: %empty  */
-#line 1207 "hw3.y"
+#line 1205 "hw3.y"
                  {
 					(yyval.token).type = TokenType::typeList;
 					(yyval.token)._ptr = new std::vector<int>();
@@ -2923,7 +2923,7 @@ yyreduce:
     break;
 
   case 77: /* expression_list: expression  */
-#line 1211 "hw3.y"
+#line 1209 "hw3.y"
                            {
 					(yyval.token).type = TokenType::typeList;
 					std::vector<int> & list = *(new std::vector<int>());
@@ -2934,7 +2934,7 @@ yyreduce:
     break;
 
   case 78: /* expression_list: expression_list ',' expression  */
-#line 1217 "hw3.y"
+#line 1215 "hw3.y"
                                                                {
 					(yyval.token) = (yyvsp[-2].token);
 					std::vector<int> & list = *(std::vector<int>*)(yyval.token)._ptr;
@@ -2944,19 +2944,19 @@ yyreduce:
     break;
 
   case 79: /* boolean: TRUE  */
-#line 1224 "hw3.y"
+#line 1222 "hw3.y"
                 { (yyval.token)._bool = 1; }
 #line 2950 "y.tab.c"
     break;
 
   case 80: /* boolean: FALSE  */
-#line 1225 "hw3.y"
+#line 1223 "hw3.y"
                 { (yyval.token)._bool = 0; }
 #line 2956 "y.tab.c"
     break;
 
   case 81: /* integer_expression: expression '+' expression  */
-#line 1228 "hw3.y"
+#line 1226 "hw3.y"
                                              {
 						(yyval.token)._int = (yyvsp[-2].token)._int + (yyvsp[0].token)._int;
 						(yyval.token).type = vint;
@@ -2966,7 +2966,7 @@ yyreduce:
     break;
 
   case 82: /* integer_expression: '-' expression  */
-#line 1233 "hw3.y"
+#line 1231 "hw3.y"
                                                    {
 						(yyval.token)._int = -(yyvsp[0].token)._int;
                         (yyval.token).type = TokenType::vint;
@@ -2976,7 +2976,7 @@ yyreduce:
     break;
 
   case 83: /* integer_expression: expression '-' expression  */
-#line 1238 "hw3.y"
+#line 1236 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int - (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
@@ -2986,7 +2986,7 @@ yyreduce:
     break;
 
   case 84: /* integer_expression: expression '*' expression  */
-#line 1243 "hw3.y"
+#line 1241 "hw3.y"
                                                {
 						(yyval.token).type = TokenType::vint;
 						(yyval.token)._int = (yyvsp[-2].token)._int * (yyvsp[0].token)._int;
@@ -2996,7 +2996,7 @@ yyreduce:
     break;
 
   case 85: /* integer_expression: expression '/' expression  */
-#line 1248 "hw3.y"
+#line 1246 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int / (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
@@ -3006,7 +3006,7 @@ yyreduce:
     break;
 
   case 86: /* integer_expression: expression MOD expression  */
-#line 1253 "hw3.y"
+#line 1251 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int % (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
@@ -3016,7 +3016,7 @@ yyreduce:
     break;
 
   case 87: /* bool_expresssion: '!' expression  */
-#line 1260 "hw3.y"
+#line 1258 "hw3.y"
                                  {
                         (yyval.token).type = TokenType::vbool;
 						fprintf(output, "iconst_1\n");
@@ -3026,7 +3026,7 @@ yyreduce:
     break;
 
   case 88: /* bool_expresssion: expression '&' expression  */
-#line 1265 "hw3.y"
+#line 1263 "hw3.y"
                                            {
                         (yyval.token).type = TokenType::vbool;
                         fprintf(output, "iand\n");
@@ -3035,7 +3035,7 @@ yyreduce:
     break;
 
   case 89: /* bool_expresssion: expression '|' expression  */
-#line 1269 "hw3.y"
+#line 1267 "hw3.y"
                                            {
                         (yyval.token).type = TokenType::vbool;
                         fprintf(output, "ior\n");
@@ -3044,7 +3044,7 @@ yyreduce:
     break;
 
   case 90: /* endif: END IF  */
-#line 1275 "hw3.y"
+#line 1273 "hw3.y"
               {
 	LEAVESCOPE();
 }
@@ -3052,7 +3052,7 @@ yyreduce:
     break;
 
   case 91: /* $@9: %empty  */
-#line 1279 "hw3.y"
+#line 1277 "hw3.y"
                                                                           {	
 			if((yyvsp[-3].token).type != TokenType::vbool){
 				//Error("Expression must be boolean");
@@ -3063,7 +3063,7 @@ yyreduce:
     break;
 
   case 93: /* $@10: %empty  */
-#line 1285 "hw3.y"
+#line 1283 "hw3.y"
                                                          {
 			fprintf(output, "goto L%d\n", (yyvsp[-3].token)._int);
 			fprintf(output, "L%d:\n", (yyvsp[-3].token)._int - 1);
@@ -3072,7 +3072,7 @@ yyreduce:
     break;
 
   case 94: /* $@11: %empty  */
-#line 1289 "hw3.y"
+#line 1287 "hw3.y"
                             {	
 			if((yyvsp[-6].token).type != TokenType::vbool){
 				//Error("Expression must be boolean");
@@ -3083,7 +3083,7 @@ yyreduce:
     break;
 
   case 96: /* $@12: %empty  */
-#line 1297 "hw3.y"
+#line 1295 "hw3.y"
                                                                               {	
 			if((yyvsp[-3].token).type != TokenType::vbool){
 				// printf("Expression must be boolean");
@@ -3094,7 +3094,7 @@ yyreduce:
     break;
 
   case 98: /* $@13: %empty  */
-#line 1303 "hw3.y"
+#line 1301 "hw3.y"
                                                            {
 			fprintf(output, "goto L%d\n", (yyvsp[-3].token)._int);
 			fprintf(output, "L%d:\n", (yyvsp[-3].token)._int - 1);
@@ -3103,7 +3103,7 @@ yyreduce:
     break;
 
   case 99: /* $@14: %empty  */
-#line 1307 "hw3.y"
+#line 1305 "hw3.y"
                               {	
 			if((yyvsp[-6].token).type != TokenType::vbool){
 				// printf("Expression must be boolean");
@@ -3114,7 +3114,7 @@ yyreduce:
     break;
 
   case 101: /* IF_PREACT: %empty  */
-#line 1315 "hw3.y"
+#line 1313 "hw3.y"
            {
 		fprintf(output, "ifeq L%d\n", LabelIndex++);
 		(yyval.token)._int = LabelIndex++;
@@ -3127,7 +3127,7 @@ yyreduce:
     break;
 
   case 102: /* $@15: %empty  */
-#line 1325 "hw3.y"
+#line 1323 "hw3.y"
              {
 				ENTERSCOPE();
 }
@@ -3135,7 +3135,7 @@ yyreduce:
     break;
 
   case 103: /* block: CBEGIN $@15 statements END  */
-#line 1328 "hw3.y"
+#line 1326 "hw3.y"
               {
 	LEAVESCOPE();
 }
@@ -3143,7 +3143,7 @@ yyreduce:
     break;
 
   case 104: /* $@16: %empty  */
-#line 1333 "hw3.y"
+#line 1331 "hw3.y"
            {
 		ENTERSCOPE();
 		loop_number++;
@@ -3155,7 +3155,7 @@ yyreduce:
     break;
 
   case 105: /* loop: LOOP $@16 statements END LOOP  */
-#line 1340 "hw3.y"
+#line 1338 "hw3.y"
                             {
 		
 		fprintf(output, "goto L%d\n", LabelIndex - 4);
@@ -3168,7 +3168,7 @@ yyreduce:
     break;
 
   case 106: /* @17: %empty  */
-#line 1348 "hw3.y"
+#line 1346 "hw3.y"
                             {
 			ENTERSCOPE();
 
@@ -3259,7 +3259,7 @@ yyreduce:
     break;
 
   case 107: /* @18: %empty  */
-#line 1434 "hw3.y"
+#line 1432 "hw3.y"
                                    {
 			std::string L1 = "L" + std::to_string(LabelIndex++);
 			std::string L2 = "L" + std::to_string(LabelIndex++);
@@ -3277,7 +3277,7 @@ yyreduce:
     break;
 
   case 108: /* $@19: %empty  */
-#line 1447 "hw3.y"
+#line 1445 "hw3.y"
                            { 
 			SymbolDesc * pSD;
 			if(seize(std::string((yyvsp[-8].token)._str),pSD)){
@@ -3347,7 +3347,7 @@ yyreduce:
     break;
 
   case 110: /* comparison: expression '<' expression  */
-#line 1515 "hw3.y"
+#line 1513 "hw3.y"
                                      {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3364,7 +3364,7 @@ yyreduce:
     break;
 
   case 111: /* comparison: expression LE expression  */
-#line 1527 "hw3.y"
+#line 1525 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3381,7 +3381,7 @@ yyreduce:
     break;
 
   case 112: /* comparison: expression EQ expression  */
-#line 1539 "hw3.y"
+#line 1537 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3398,7 +3398,7 @@ yyreduce:
     break;
 
   case 113: /* comparison: expression '>' expression  */
-#line 1551 "hw3.y"
+#line 1549 "hw3.y"
                                        {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3415,7 +3415,7 @@ yyreduce:
     break;
 
   case 114: /* comparison: expression GE expression  */
-#line 1563 "hw3.y"
+#line 1561 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3432,7 +3432,7 @@ yyreduce:
     break;
 
   case 115: /* comparison: expression NE expression  */
-#line 1575 "hw3.y"
+#line 1573 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3449,7 +3449,7 @@ yyreduce:
     break;
 
   case 119: /* constant_declaration: CONST id ASSIGN declaration_value  */
-#line 1594 "hw3.y"
+#line 1592 "hw3.y"
                                                        {
 						if (((yyvsp[0].token).type < SymbolType::sarray) && ((yyvsp[0].token).type < SymbolType::sarray)){
 							char * name = (yyvsp[-2].token)._str;
@@ -3481,7 +3481,7 @@ yyreduce:
     break;
 
   case 120: /* constant_declaration: CONST id ':' type ASSIGN declaration_value  */
-#line 1621 "hw3.y"
+#line 1619 "hw3.y"
                                                                  {
 						if (((yyvsp[-2].token).type < SymbolType::sarray) && ((yyvsp[-2].token).type < SymbolType::sarray)){
 							if ((yyvsp[-2].token).type == (yyvsp[0].token).type){
@@ -3516,7 +3516,7 @@ yyreduce:
     break;
 
   case 121: /* variable_declaration: VAR id ':' type  */
-#line 1653 "hw3.y"
+#line 1651 "hw3.y"
                                      { 
 			std::string name((yyvsp[-2].token)._str);
 			SymbolDesc sd;
@@ -3528,7 +3528,7 @@ yyreduce:
     break;
 
   case 122: /* variable_declaration: VAR id ASSIGN declaration_value  */
-#line 1660 "hw3.y"
+#line 1658 "hw3.y"
                                                      { 
 						if (((yyvsp[0].token).type < SymbolType::sarray) && ((yyvsp[0].token).type < SymbolType::sarray)){
 							char * name = (yyvsp[-2].token)._str;
@@ -3558,7 +3558,7 @@ yyreduce:
     break;
 
   case 123: /* variable_declaration: VAR id ':' type ASSIGN declaration_value  */
-#line 1685 "hw3.y"
+#line 1683 "hw3.y"
                                                               { 
 						if (((yyvsp[-2].token).type < SymbolType::sarray) && ((yyvsp[-2].token).type < SymbolType::sarray)){
 							if ((yyvsp[-2].token).type == (yyvsp[0].token).type){
@@ -3590,7 +3590,7 @@ yyreduce:
     break;
 
   case 124: /* arrays_declaration: VAR id ':' ARRAY integer '.' '.' integer OF type  */
-#line 1714 "hw3.y"
+#line 1712 "hw3.y"
                                                                     {
 						SymbolDesc sd;
 						uDependency value;
@@ -3799,7 +3799,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 1727 "hw3.y"
+#line 1725 "hw3.y"
 
 
 void yyerror(char *msg)
