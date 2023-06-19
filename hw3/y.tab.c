@@ -3827,7 +3827,7 @@ int main(int argc, char **argv)
     /* perform parsing */
     if (yyparse() == 1)             /* parsing */
         yyerror("Parsing error !"); /* syntax error */
-
+	
+	fclose(yyin);
     fclose(output);
-
 }
