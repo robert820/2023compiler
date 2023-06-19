@@ -1065,7 +1065,6 @@ expression: integer_expression{
 						printf("Argument type Unmatch");
 					}
 					else{
-						// printf("%d", pSD->symdeps[0].retType);
 						fprintf(output, "invokestatic %s %s.%s(", SymType2JBStr(pSD->symdeps[0].retType).c_str(), ClassName.c_str(), idName.c_str());
 						for(int i = 0 ; i < list->size();++i ){
 							fprintf(output, "%s", SymType2JBStr((*list)[i]).c_str());
@@ -1084,6 +1083,7 @@ expression: integer_expression{
 				else {
 					$$.type = TokenType::blank;
 				}
+				delete pSD;
 			}
             | bool_expresssion{
 				$$.returnByFun = false;
@@ -1141,14 +1141,6 @@ expression: integer_expression{
 								fprintf(output, " java.lang.String ");
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << " boolean ";
-								$$.type = TokenType::vbool;
-								break;
-								case SymbolType::array:
-								jbfile << " array ";
-								$$.type = TokenType::varray;
-								break;*/
 								default:
 								break;
 							}
@@ -1169,15 +1161,6 @@ expression: integer_expression{
 								fprintf(output, "aload %d\n", pSD->symindex);
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << "cload " << <<endl;
-								break;
-								case SymbolType::std::string:
-								jbfile << "sload " << <<endl;
-								break;
-								case SymbolType::array:
-								jbfile << "aload " << <<endl;
-								break;*/
 								default:
 								break;
 							}
@@ -1187,6 +1170,7 @@ expression: integer_expression{
 				else {
 				}
 				delete $1._str;
+				delete pSD;
             }
 			| id '[' expression ']' {
 				// array 的部分
@@ -1443,6 +1427,7 @@ loop: LOOP {
 					break;
 				}
 			}
+			delete pSD;
 		}
 		'.' '.' expression {
 			std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -1520,6 +1505,7 @@ loop: LOOP {
 				
 			}
 			LEAVESCOPE();
+			delete pSD;
 		}
 		 END FOR
     ;
@@ -1668,7 +1654,6 @@ variable_declaration: VAR id ':' type{
 			sd.symtype = Token2Symbol($4.type);
 			sd.returnByFun = false;
 			insert(std::string(name),sd);
-			//printf("%s %s", name.c_str(), $2._str);
 		    }
                     | VAR id ASSIGN declaration_value{ 
 						if (($4.type < SymbolType::sarray) && ($4.type < SymbolType::sarray)){
