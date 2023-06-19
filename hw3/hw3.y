@@ -1087,7 +1087,6 @@ expression: integer_expression{
 					if(pSD->readonly){
 						switch(pSD->symtype){
 							case SymbolType::sinteger:
-							printf("-----hi-----\n");
 							fprintf(output, "sipush %d\n", pSD->symdeps[0]._int);
 							$$.type = TokenType::vint;
 							break;
