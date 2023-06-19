@@ -1739,17 +1739,16 @@ int main(int argc, char **argv)
     yyin = fopen(argv[1], "r"); /* open input file */
 
 	// 改 classname 為 wholename(完整檔案名稱)
-	char *filename = strtok(argv[1], ".");
+	ClassName = strtok(argv[1], ".");
 	char *wholeName;
-	ClassName = filename;
-	sprintf(wholeName, "%s.jasm", filename);
+	sprintf(wholeName, "%s.jasm", ClassName.c_str());
 
     output = fopen(wholeName, "w");
     InitialTableStack();
     /* perform parsing */
     if (yyparse() == 1)             /* parsing */
         yyerror("Parsing error !"); /* syntax error */
-
+	delete wholeName;
 	fclose(yyin);
     fclose(output);
 }
