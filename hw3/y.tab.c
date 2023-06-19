@@ -1200,13 +1200,13 @@ static const yytype_int16 yyrline[] =
      720,   721,   722,   723,   726,   727,   728,   729,   730,   759,
      760,   760,   784,   784,   808,   812,   822,   823,   824,   827,
      828,   831,   859,   865,   872,   876,   879,   882,   915,   918,
-     919,  1017,  1023,  1029,  1035,  1044,  1047,  1050,  1084,  1087,
-    1090,  1171,  1175,  1181,  1187,  1193,  1201,  1205,  1211,  1218,
-    1219,  1222,  1227,  1232,  1237,  1242,  1247,  1254,  1259,  1263,
-    1269,  1273,  1273,  1279,  1283,  1279,  1291,  1291,  1297,  1301,
-    1297,  1309,  1319,  1319,  1327,  1327,  1342,  1428,  1441,  1342,
-    1509,  1521,  1533,  1545,  1557,  1569,  1583,  1584,  1585,  1588,
-    1615,  1647,  1654,  1679,  1708
+     919,  1009,  1015,  1021,  1027,  1036,  1039,  1042,  1076,  1079,
+    1082,  1164,  1168,  1174,  1180,  1186,  1194,  1198,  1204,  1211,
+    1212,  1215,  1220,  1225,  1230,  1235,  1240,  1247,  1252,  1256,
+    1262,  1266,  1266,  1272,  1276,  1272,  1284,  1284,  1290,  1294,
+    1290,  1302,  1312,  1312,  1320,  1320,  1335,  1421,  1434,  1335,
+    1502,  1514,  1526,  1538,  1550,  1562,  1576,  1577,  1578,  1581,
+    1608,  1640,  1647,  1672,  1701
 };
 #endif
 
@@ -2578,7 +2578,7 @@ yyreduce:
 							(yyval.token).type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -2603,14 +2603,6 @@ yyreduce:
 								fprintf(output, " java.lang.String ");
 								(yyval.token).type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << " boolean ";
-								$$.type = TokenType::vbool;
-								break;
-								case SymbolType::array:
-								jbfile << " array ";
-								$$.type = TokenType::varray;
-								break;*/
 								default:
 								break;
 							}
@@ -2650,71 +2642,71 @@ yyreduce:
 				}
 				delete (yyvsp[0].token)._str;
             }
-#line 2654 "y.tab.c"
+#line 2646 "y.tab.c"
     break;
 
   case 61: /* declaration_value: integer  */
-#line 1017 "hw3.y"
+#line 1009 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vint;
 				(yyval.token).returnByFun = false;
                 //fprintf(output, "sipush %d\n", $1._int);
             }
-#line 2665 "y.tab.c"
+#line 2657 "y.tab.c"
     break;
 
   case 62: /* declaration_value: str  */
-#line 1023 "hw3.y"
+#line 1015 "hw3.y"
                   {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vstring;
 				(yyval.token).returnByFun = false;
                 //fprintf(output, "\t\tldc %s\n", $1._str);
             }
-#line 2676 "y.tab.c"
+#line 2668 "y.tab.c"
     break;
 
   case 63: /* declaration_value: boolean  */
-#line 1029 "hw3.y"
+#line 1021 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vbool;
 				(yyval.token).returnByFun = false;
                 //fprintf(output, "ldc %s\n", $1);
             }
-#line 2687 "y.tab.c"
+#line 2679 "y.tab.c"
     break;
 
   case 64: /* declaration_value: real  */
-#line 1035 "hw3.y"
+#line 1027 "hw3.y"
                    {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vreal;
 				(yyval.token).returnByFun = false;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                 //fprintf(output, "ldc %s\n", $1);
             }
-#line 2698 "y.tab.c"
+#line 2690 "y.tab.c"
     break;
 
   case 65: /* expression: integer_expression  */
-#line 1044 "hw3.y"
+#line 1036 "hw3.y"
                               {
 				(yyval.token).returnByFun = false;
 			}
-#line 2706 "y.tab.c"
+#line 2698 "y.tab.c"
     break;
 
   case 66: /* expression: '(' expression ')'  */
-#line 1047 "hw3.y"
+#line 1039 "hw3.y"
                                 {
                 (yyval.token) = (yyvsp[-1].token);
             }
-#line 2714 "y.tab.c"
+#line 2706 "y.tab.c"
     break;
 
   case 67: /* expression: id '(' expression_list ')'  */
-#line 1050 "hw3.y"
+#line 1042 "hw3.y"
                                         {
 				SymbolDesc * pSD;
 				std::string idName = std::string((yyvsp[-3].token)._str);
@@ -2747,29 +2739,29 @@ yyreduce:
 				else {
 					(yyval.token).type = TokenType::blank;
 				}
-				delete pSD;
+				// delete pSD;
+			}
+#line 2745 "y.tab.c"
+    break;
+
+  case 68: /* expression: bool_expresssion  */
+#line 1076 "hw3.y"
+                              {
+				(yyval.token).returnByFun = false;
 			}
 #line 2753 "y.tab.c"
     break;
 
-  case 68: /* expression: bool_expresssion  */
-#line 1084 "hw3.y"
-                              {
+  case 69: /* expression: comparison  */
+#line 1079 "hw3.y"
+                        {
 				(yyval.token).returnByFun = false;
 			}
 #line 2761 "y.tab.c"
     break;
 
-  case 69: /* expression: comparison  */
-#line 1087 "hw3.y"
-                        {
-				(yyval.token).returnByFun = false;
-			}
-#line 2769 "y.tab.c"
-    break;
-
   case 70: /* expression: id  */
-#line 1090 "hw3.y"
+#line 1082 "hw3.y"
                 {
                 SymbolDesc * pSD;
 				(yyval.token).returnByFun = false;
@@ -2778,6 +2770,7 @@ yyreduce:
 					if(pSD->readonly){
 						switch(pSD->symtype){
 							case SymbolType::sinteger:
+							printf("-----hi-----\n");
 							fprintf(output, "sipush %d\n", pSD->symdeps[0]._int);
 							(yyval.token).type = TokenType::vint;
 							break;
@@ -2849,266 +2842,266 @@ yyreduce:
 				else {
 				}
 				delete (yyvsp[0].token)._str;
-				delete pSD;
+				// delete pSD;
             }
-#line 2855 "y.tab.c"
+#line 2848 "y.tab.c"
     break;
 
   case 71: /* expression: id '[' expression ']'  */
-#line 1171 "hw3.y"
+#line 1164 "hw3.y"
                                                 {
 				// array 的部分
 				(yyval.token).type = vint;
 			}
-#line 2864 "y.tab.c"
+#line 2857 "y.tab.c"
     break;
 
   case 72: /* expression: integer  */
-#line 1175 "hw3.y"
+#line 1168 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vint;
 				(yyval.token).returnByFun = false;
                 fprintf(output, "sipush %d\n", (yyvsp[0].token)._int);
             }
-#line 2875 "y.tab.c"
+#line 2868 "y.tab.c"
     break;
 
   case 73: /* expression: str  */
-#line 1181 "hw3.y"
+#line 1174 "hw3.y"
                   {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vstring;
 				(yyval.token).returnByFun = false;
                 fprintf(output, "\t\tldc %s\n", (yyvsp[0].token)._str);
             }
-#line 2886 "y.tab.c"
+#line 2879 "y.tab.c"
     break;
 
   case 74: /* expression: boolean  */
-#line 1187 "hw3.y"
+#line 1180 "hw3.y"
                       {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vbool;
 				(yyval.token).returnByFun = false;
                 //fprintf(output, "ldc %s\n", $1);
             }
-#line 2897 "y.tab.c"
+#line 2890 "y.tab.c"
     break;
 
   case 75: /* expression: real  */
-#line 1193 "hw3.y"
+#line 1186 "hw3.y"
                    {
                 (yyval.token) = (yyvsp[0].token);
                 (yyval.token).type = vreal;
 				(yyval.token).returnByFun = false;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
                 //fprintf(output, "ldc %s\n", $1);
             }
-#line 2908 "y.tab.c"
+#line 2901 "y.tab.c"
     break;
 
   case 76: /* expression_list: %empty  */
-#line 1201 "hw3.y"
+#line 1194 "hw3.y"
                  {
 					(yyval.token).type = TokenType::typeList;
 					(yyval.token)._ptr = new std::vector<int>();
 				}
-#line 2917 "y.tab.c"
+#line 2910 "y.tab.c"
     break;
 
   case 77: /* expression_list: expression  */
-#line 1205 "hw3.y"
+#line 1198 "hw3.y"
                            {
 					(yyval.token).type = TokenType::typeList;
 					std::vector<int> & list = *(new std::vector<int>());
 					list.push_back(Token2Symbol((yyvsp[0].token).type));
 					(yyval.token)._ptr = &list;
 				}
-#line 2928 "y.tab.c"
+#line 2921 "y.tab.c"
     break;
 
   case 78: /* expression_list: expression_list ',' expression  */
-#line 1211 "hw3.y"
+#line 1204 "hw3.y"
                                                                {
 					(yyval.token) = (yyvsp[-2].token);
 					std::vector<int> & list = *(std::vector<int>*)(yyval.token)._ptr;
 					list.push_back(Token2Symbol((yyvsp[0].token).type));
 				}
-#line 2938 "y.tab.c"
+#line 2931 "y.tab.c"
     break;
 
   case 79: /* boolean: TRUE  */
-#line 1218 "hw3.y"
+#line 1211 "hw3.y"
                 { (yyval.token)._bool = 1; }
-#line 2944 "y.tab.c"
+#line 2937 "y.tab.c"
     break;
 
   case 80: /* boolean: FALSE  */
-#line 1219 "hw3.y"
+#line 1212 "hw3.y"
                 { (yyval.token)._bool = 0; }
-#line 2950 "y.tab.c"
+#line 2943 "y.tab.c"
     break;
 
   case 81: /* integer_expression: expression '+' expression  */
-#line 1222 "hw3.y"
+#line 1215 "hw3.y"
                                              {
 						(yyval.token)._int = (yyvsp[-2].token)._int + (yyvsp[0].token)._int;
 						(yyval.token).type = vint;
 						fprintf(output, "\t\tiadd\n"); 
                     }
-#line 2960 "y.tab.c"
+#line 2953 "y.tab.c"
     break;
 
   case 82: /* integer_expression: '-' expression  */
-#line 1227 "hw3.y"
+#line 1220 "hw3.y"
                                                    {
 						(yyval.token)._int = -(yyvsp[0].token)._int;
                         (yyval.token).type = TokenType::vint;
 						fprintf(output, "ineg\n");
                     }
-#line 2970 "y.tab.c"
+#line 2963 "y.tab.c"
     break;
 
   case 83: /* integer_expression: expression '-' expression  */
-#line 1232 "hw3.y"
+#line 1225 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int - (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
 						fprintf(output, "isub\n");
 		   			}
-#line 2980 "y.tab.c"
+#line 2973 "y.tab.c"
     break;
 
   case 84: /* integer_expression: expression '*' expression  */
-#line 1237 "hw3.y"
+#line 1230 "hw3.y"
                                                {
 						(yyval.token).type = TokenType::vint;
 						(yyval.token)._int = (yyvsp[-2].token)._int * (yyvsp[0].token)._int;
 						fprintf(output, "imul\n");
 					}
-#line 2990 "y.tab.c"
+#line 2983 "y.tab.c"
     break;
 
   case 85: /* integer_expression: expression '/' expression  */
-#line 1242 "hw3.y"
+#line 1235 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int / (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
 						fprintf(output, "idiv\n");
 					}
-#line 3000 "y.tab.c"
+#line 2993 "y.tab.c"
     break;
 
   case 86: /* integer_expression: expression MOD expression  */
-#line 1247 "hw3.y"
+#line 1240 "hw3.y"
                                                {
 						(yyval.token)._int = (yyvsp[-2].token)._int % (yyvsp[0].token)._int;
 						(yyval.token).type = TokenType::vint;
 						fprintf(output, "irem\n");
 					}
-#line 3010 "y.tab.c"
+#line 3003 "y.tab.c"
     break;
 
   case 87: /* bool_expresssion: '!' expression  */
-#line 1254 "hw3.y"
+#line 1247 "hw3.y"
                                  {
                         (yyval.token).type = TokenType::vbool;
 						fprintf(output, "iconst_1\n");
                         fprintf(output, "ixor\n");
                 }
-#line 3020 "y.tab.c"
+#line 3013 "y.tab.c"
     break;
 
   case 88: /* bool_expresssion: expression '&' expression  */
-#line 1259 "hw3.y"
+#line 1252 "hw3.y"
                                            {
                         (yyval.token).type = TokenType::vbool;
                         fprintf(output, "iand\n");
                 }
-#line 3029 "y.tab.c"
+#line 3022 "y.tab.c"
     break;
 
   case 89: /* bool_expresssion: expression '|' expression  */
-#line 1263 "hw3.y"
+#line 1256 "hw3.y"
                                            {
                         (yyval.token).type = TokenType::vbool;
                         fprintf(output, "ior\n");
                 }
-#line 3038 "y.tab.c"
+#line 3031 "y.tab.c"
     break;
 
   case 90: /* endif: END IF  */
-#line 1269 "hw3.y"
+#line 1262 "hw3.y"
               {
 	LEAVESCOPE();
 }
-#line 3046 "y.tab.c"
+#line 3039 "y.tab.c"
     break;
 
   case 91: /* $@9: %empty  */
-#line 1273 "hw3.y"
+#line 1266 "hw3.y"
                                                                           {	
 			if((yyvsp[-3].token).type != TokenType::vbool){
 				//Error("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", (yyvsp[-2].token)._int-1);
 		}
-#line 3057 "y.tab.c"
+#line 3050 "y.tab.c"
     break;
 
   case 93: /* $@10: %empty  */
-#line 1279 "hw3.y"
+#line 1272 "hw3.y"
                                                          {
 			fprintf(output, "goto L%d\n", (yyvsp[-3].token)._int);
 			fprintf(output, "L%d:\n", (yyvsp[-3].token)._int - 1);
 		}
-#line 3066 "y.tab.c"
+#line 3059 "y.tab.c"
     break;
 
   case 94: /* $@11: %empty  */
-#line 1283 "hw3.y"
+#line 1276 "hw3.y"
                             {	
 			if((yyvsp[-6].token).type != TokenType::vbool){
 				//Error("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", (yyvsp[-5].token)._int);
 		}
-#line 3077 "y.tab.c"
+#line 3070 "y.tab.c"
     break;
 
   case 96: /* $@12: %empty  */
-#line 1291 "hw3.y"
+#line 1284 "hw3.y"
                                                                               {	
 			if((yyvsp[-3].token).type != TokenType::vbool){
 				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", (yyvsp[-2].token)._int-1);
 		}
-#line 3088 "y.tab.c"
+#line 3081 "y.tab.c"
     break;
 
   case 98: /* $@13: %empty  */
-#line 1297 "hw3.y"
+#line 1290 "hw3.y"
                                                            {
 			fprintf(output, "goto L%d\n", (yyvsp[-3].token)._int);
 			fprintf(output, "L%d:\n", (yyvsp[-3].token)._int - 1);
 		}
-#line 3097 "y.tab.c"
+#line 3090 "y.tab.c"
     break;
 
   case 99: /* $@14: %empty  */
-#line 1301 "hw3.y"
+#line 1294 "hw3.y"
                               {	
 			if((yyvsp[-6].token).type != TokenType::vbool){
 				// printf("Expression must be boolean");
 			}
 			fprintf(output, "L%d:\n", (yyvsp[-5].token)._int);
 		}
-#line 3108 "y.tab.c"
+#line 3101 "y.tab.c"
     break;
 
   case 101: /* IF_PREACT: %empty  */
-#line 1309 "hw3.y"
+#line 1302 "hw3.y"
            {
 		fprintf(output, "ifeq L%d\n", LabelIndex++);
 		(yyval.token)._int = LabelIndex++;
@@ -3117,27 +3110,27 @@ yyreduce:
 		ENTERSCOPE();
 		if_number++;
 	}
-#line 3121 "y.tab.c"
+#line 3114 "y.tab.c"
     break;
 
   case 102: /* $@15: %empty  */
-#line 1319 "hw3.y"
+#line 1312 "hw3.y"
              {
 				ENTERSCOPE();
 }
-#line 3129 "y.tab.c"
+#line 3122 "y.tab.c"
     break;
 
   case 103: /* block: CBEGIN $@15 statements END  */
-#line 1322 "hw3.y"
+#line 1315 "hw3.y"
               {
 	LEAVESCOPE();
 }
-#line 3137 "y.tab.c"
+#line 3130 "y.tab.c"
     break;
 
   case 104: /* $@16: %empty  */
-#line 1327 "hw3.y"
+#line 1320 "hw3.y"
            {
 		ENTERSCOPE();
 		loop_number++;
@@ -3145,11 +3138,11 @@ yyreduce:
 		fprintf(output, "L%d:\n", LabelIndex++);
 		// $<token>$._int = LabelIndex++;
 	}
-#line 3149 "y.tab.c"
+#line 3142 "y.tab.c"
     break;
 
   case 105: /* loop: LOOP $@16 statements END LOOP  */
-#line 1334 "hw3.y"
+#line 1327 "hw3.y"
                             {
 		
 		fprintf(output, "goto L%d\n", LabelIndex - 4);
@@ -3158,11 +3151,11 @@ yyreduce:
 		
 		LEAVESCOPE();
 	}
-#line 3162 "y.tab.c"
+#line 3155 "y.tab.c"
     break;
 
   case 106: /* @17: %empty  */
-#line 1342 "hw3.y"
+#line 1335 "hw3.y"
                             {
 			ENTERSCOPE();
 
@@ -3247,13 +3240,13 @@ yyreduce:
 					break;
 				}
 			}
-			delete pSD;
+			// delete pSD;
 		}
-#line 3253 "y.tab.c"
+#line 3246 "y.tab.c"
     break;
 
   case 107: /* @18: %empty  */
-#line 1428 "hw3.y"
+#line 1421 "hw3.y"
                                    {
 			std::string L1 = "L" + std::to_string(LabelIndex++);
 			std::string L2 = "L" + std::to_string(LabelIndex++);
@@ -3267,11 +3260,11 @@ yyreduce:
 			fprintf(output, "ifne L%d\n", LabelIndex);
 			(yyval.token)._int = LabelIndex++;
 		}
-#line 3271 "y.tab.c"
+#line 3264 "y.tab.c"
     break;
 
   case 108: /* $@19: %empty  */
-#line 1441 "hw3.y"
+#line 1434 "hw3.y"
                            { 
 			SymbolDesc * pSD;
 			if(seize(std::string((yyvsp[-8].token)._str),pSD)){
@@ -3335,13 +3328,13 @@ yyreduce:
 				
 			}
 			LEAVESCOPE();
-			delete pSD;
+			// delete pSD;
 		}
-#line 3341 "y.tab.c"
+#line 3334 "y.tab.c"
     break;
 
   case 110: /* comparison: expression '<' expression  */
-#line 1509 "hw3.y"
+#line 1502 "hw3.y"
                                      {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3354,11 +3347,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3358 "y.tab.c"
+#line 3351 "y.tab.c"
     break;
 
   case 111: /* comparison: expression LE expression  */
-#line 1521 "hw3.y"
+#line 1514 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3371,11 +3364,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3375 "y.tab.c"
+#line 3368 "y.tab.c"
     break;
 
   case 112: /* comparison: expression EQ expression  */
-#line 1533 "hw3.y"
+#line 1526 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3388,11 +3381,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3392 "y.tab.c"
+#line 3385 "y.tab.c"
     break;
 
   case 113: /* comparison: expression '>' expression  */
-#line 1545 "hw3.y"
+#line 1538 "hw3.y"
                                        {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3405,11 +3398,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3409 "y.tab.c"
+#line 3402 "y.tab.c"
     break;
 
   case 114: /* comparison: expression GE expression  */
-#line 1557 "hw3.y"
+#line 1550 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3422,11 +3415,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3426 "y.tab.c"
+#line 3419 "y.tab.c"
     break;
 
   case 115: /* comparison: expression NE expression  */
-#line 1569 "hw3.y"
+#line 1562 "hw3.y"
                                       {
 				(yyval.token).type = TokenType::vbool;
 				std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -3439,11 +3432,11 @@ yyreduce:
 				fprintf(output, "iconst_1\n");
 				fprintf(output, "%s:\n", L2.c_str());
 			}
-#line 3443 "y.tab.c"
+#line 3436 "y.tab.c"
     break;
 
   case 119: /* constant_declaration: CONST id ASSIGN declaration_value  */
-#line 1588 "hw3.y"
+#line 1581 "hw3.y"
                                                        {
 						if (((yyvsp[0].token).type < SymbolType::sarray) && ((yyvsp[0].token).type < SymbolType::sarray)){
 							char * name = (yyvsp[-2].token)._str;
@@ -3471,11 +3464,11 @@ yyreduce:
 							// printf("declaration 型態錯誤\n" );
 						}
                     }
-#line 3475 "y.tab.c"
+#line 3468 "y.tab.c"
     break;
 
   case 120: /* constant_declaration: CONST id ':' type ASSIGN declaration_value  */
-#line 1615 "hw3.y"
+#line 1608 "hw3.y"
                                                                  {
 						if (((yyvsp[-2].token).type < SymbolType::sarray) && ((yyvsp[-2].token).type < SymbolType::sarray)){
 							if ((yyvsp[-2].token).type == (yyvsp[0].token).type){
@@ -3506,11 +3499,11 @@ yyreduce:
 							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
                     }
-#line 3510 "y.tab.c"
+#line 3503 "y.tab.c"
     break;
 
   case 121: /* variable_declaration: VAR id ':' type  */
-#line 1647 "hw3.y"
+#line 1640 "hw3.y"
                                      { 
 			std::string name((yyvsp[-2].token)._str);
 			SymbolDesc sd;
@@ -3518,11 +3511,11 @@ yyreduce:
 			sd.returnByFun = false;
 			insert(std::string(name),sd);
 		    }
-#line 3522 "y.tab.c"
+#line 3515 "y.tab.c"
     break;
 
   case 122: /* variable_declaration: VAR id ASSIGN declaration_value  */
-#line 1654 "hw3.y"
+#line 1647 "hw3.y"
                                                      { 
 						if (((yyvsp[0].token).type < SymbolType::sarray) && ((yyvsp[0].token).type < SymbolType::sarray)){
 							char * name = (yyvsp[-2].token)._str;
@@ -3548,11 +3541,11 @@ yyreduce:
 							// printf("declaration 型態錯誤\n" );
 						}
 		    		}
-#line 3552 "y.tab.c"
+#line 3545 "y.tab.c"
     break;
 
   case 123: /* variable_declaration: VAR id ':' type ASSIGN declaration_value  */
-#line 1679 "hw3.y"
+#line 1672 "hw3.y"
                                                               { 
 						if (((yyvsp[-2].token).type < SymbolType::sarray) && ((yyvsp[-2].token).type < SymbolType::sarray)){
 							if ((yyvsp[-2].token).type == (yyvsp[0].token).type){
@@ -3580,11 +3573,11 @@ yyreduce:
 							// printf("declaration 型態錯誤或型態不一樣\n" );
 						}
 		    		}
-#line 3584 "y.tab.c"
+#line 3577 "y.tab.c"
     break;
 
   case 124: /* arrays_declaration: VAR id ':' ARRAY integer '.' '.' integer OF type  */
-#line 1708 "hw3.y"
+#line 1701 "hw3.y"
                                                                     {
 						SymbolDesc sd;
 						uDependency value;
@@ -3596,11 +3589,11 @@ yyreduce:
 						sd.symdeps.push_back(value);
 						insert((yyvsp[-8].token)._str, sd);
 					}
-#line 3600 "y.tab.c"
+#line 3593 "y.tab.c"
     break;
 
 
-#line 3604 "y.tab.c"
+#line 3597 "y.tab.c"
 
       default: break;
     }
@@ -3793,7 +3786,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 1721 "hw3.y"
+#line 1714 "hw3.y"
 
 
 void yyerror(char *msg)

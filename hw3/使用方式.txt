@@ -1,3 +1,13 @@
+// 使用cygwin64 Terminal 桌面上 預設為 C:\cygwin64\home\Robert
+
+//我的資料夾
+cd 2023_compiler_design/hw3/
+
+//連老師伺服器
+ssh -p 4091 B10815007@140.118.155.192
+//密碼 -- 我的學號
+B10815007
+
 // 清除之前產生的檔案
 make clean
 
@@ -12,3 +22,5 @@ make
 
 // 執行 class 檔 ，輸出執行結果
 java XXX
+
+

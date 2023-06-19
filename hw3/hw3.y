@@ -942,7 +942,7 @@ declaration_value: integer_expression{
 							$$.type = TokenType::vstring;
 							break;
 							case SymbolType::sreal:
-							fprintf(output, "ldc %sf\n", pSD->symdeps[0]._real);
+							fprintf(output, "ldc %f\n", pSD->symdeps[0]._real);
 							break;
 							default:
 							break;
@@ -967,14 +967,6 @@ declaration_value: integer_expression{
 								fprintf(output, " java.lang.String ");
 								$$.type = TokenType::vstring;
 								break;
-								/*case SymbolType::boolean:
-								jbfile << " boolean ";
-								$$.type = TokenType::vbool;
-								break;
-								case SymbolType::array:
-								jbfile << " array ";
-								$$.type = TokenType::varray;
-								break;*/
 								default:
 								break;
 							}
@@ -1079,7 +1071,7 @@ expression: integer_expression{
 				else {
 					$$.type = TokenType::blank;
 				}
-				delete pSD;
+				// delete pSD;
 			}
             | bool_expresssion{
 				$$.returnByFun = false;
@@ -1095,6 +1087,7 @@ expression: integer_expression{
 					if(pSD->readonly){
 						switch(pSD->symtype){
 							case SymbolType::sinteger:
+							printf("-----hi-----\n");
 							fprintf(output, "sipush %d\n", pSD->symdeps[0]._int);
 							$$.type = TokenType::vint;
 							break;
@@ -1166,7 +1159,7 @@ expression: integer_expression{
 				else {
 				}
 				delete $1._str;
-				delete pSD;
+				// delete pSD;
             }
 			| id '[' expression ']' {
 				// array 的部分
@@ -1423,7 +1416,7 @@ loop: LOOP {
 					break;
 				}
 			}
-			delete pSD;
+			// delete pSD;
 		}
 		'.' '.' expression {
 			std::string L1 = "L" + std::to_string(LabelIndex++);
@@ -1501,7 +1494,7 @@ loop: LOOP {
 				
 			}
 			LEAVESCOPE();
-			delete pSD;
+			// delete pSD;
 		}
 		 END FOR
     ;
